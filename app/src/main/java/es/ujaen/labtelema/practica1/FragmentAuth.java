@@ -75,8 +75,7 @@ public class FragmentAuth extends Fragment {
 
         final EditText user = fragment.findViewById(R.id.fragment_auth_edit_name);
         final EditText pass = fragment.findViewById(R.id.fragment_auth_edit_pass);
-        final EditText domain = fragment.findViewById(R.id.fragment_auth_edit_ip);
-        final EditText port = fragment.findViewById(R.id.fragment_auth_edit_port);
+
 
         Button connect = fragment.findViewById(R.id.fragment_auth_button);
 
@@ -86,24 +85,18 @@ public class FragmentAuth extends Fragment {
             public void onClick(View view) {
                 String s_user = user.getEditableText().toString();
                 String s_pass = pass.getEditableText().toString();
-                String s_domain = domain.getEditableText().toString();
-                String s_port = port.getEditableText().toString();
+
 
                 short temp = 0;
 
-                try {
-                    temp = Short.parseShort(s_port);
-                } catch (NumberFormatException ex) {
-                    temp = 80;
-                }
-                userData = new UserData(s_user, s_pass, s_domain, temp);
-                Toast.makeText(getActivity(), s_user + " " + s_pass + " " + s_domain + " " + s_port, Toast.LENGTH_LONG).show();
+
+                userData = new UserData(s_user, s_pass);
+                Toast.makeText(getActivity(), s_user + " " + s_pass, Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getActivity(),ServiceActivity.class);
                 intent.putExtra(ServiceActivity.PARAMETER_USER,s_user);
                 intent.putExtra("pass",s_pass);
-                intent.putExtra("domain",s_domain);
-                intent.putExtra("port",s_port);
+
                 startActivity(intent);
                 mListener.onFragmentInteraction(userData);
             }

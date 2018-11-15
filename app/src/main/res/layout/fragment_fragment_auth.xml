@@ -38,6 +38,7 @@
         android:layout_alignStart="@+id/fragment_auth_label_user"
         android:layout_below="@+id/fragment_auth_label_user"
         android:text="@string/login_pass"
+        android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/background_light" />
 
@@ -49,6 +50,7 @@
         android:layout_below="@+id/fragment_auth_label_user"
         android:ems="10"
         android:inputType="textPassword"
+        android:layout_marginTop="10dp"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <Button
@@ -56,50 +58,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/fragment_auth_label_port"
+        android:layout_below="@id/fragment_auth_label_pass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="@string/fragment_button_connect" />
+        android:text="Login" />
 
-    <TextView
-        android:id="@+id/fragment_auth_label_ip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/fragment_auth_label_user"
-        android:layout_below="@+id/fragment_auth_label_pass"
-        android:text="@string/login_ip"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-    <EditText
-        android:id="@+id/fragment_auth_edit_ip"
-        android:layout_width="159dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/fragment_auth_label_pass"
-        android:ems="10"
-        android:inputType="text|textPersonName"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-    <TextView
-        android:id="@+id/fragment_auth_label_port"
-        android:layout_width="144dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/fragment_auth_label_ip"
-        android:text="@string/lagin_port"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
-
-    <EditText
-        android:id="@+id/fragment_auth_edit_port"
-        android:layout_width="159dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/fragment_auth_edit_ip"
-        android:ems="10"
-        android:inputType="textPersonName|number"
-        android:textCursorDrawable="@android:color/background_light"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
 </RelativeLayout>
 </ScrollView>

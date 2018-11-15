@@ -44,7 +44,7 @@ public class UserData {
      */
     public UserData(String user,String pass,String domain,short port){
         this.userName=user;
-        this.password=pass;
+        this.password=password;
         this.domain=domain;
         this.port=port;
     }

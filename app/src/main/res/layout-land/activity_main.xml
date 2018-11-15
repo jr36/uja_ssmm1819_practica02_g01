@@ -24,7 +24,7 @@
             android:gravity="center_horizontal"
             android:text="My Soccer"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="@android:color/background_light" />
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <TextView
             android:id="@+id/main_degree"
