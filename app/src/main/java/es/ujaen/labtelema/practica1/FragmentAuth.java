@@ -90,7 +90,7 @@ public class FragmentAuth extends Fragment {
                 short temp = 0;
 
 
-                userData = new UserData(s_user, s_pass);
+                userData = new UserData(s_user, s_pass,"labtelema.ujaen.es", (short) 80);
                 Toast.makeText(getActivity(), s_user + " " + s_pass, Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getActivity(),ServiceActivity.class);

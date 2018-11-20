@@ -4,6 +4,12 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="opc"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/ID1"
+        android:orderInCategory="100"
+        android:title="cambiar"
+        app:showAsAction="always" />
+
 </menu>
