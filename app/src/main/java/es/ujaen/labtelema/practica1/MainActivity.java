@@ -1,11 +1,12 @@
 package es.ujaen.labtelema.practica1;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.TokenWatcher;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +15,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,10 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
-import java.net.URLConnection;
-import java.text.DateFormat;
 
-import data.Preferences;
 import data.UserData;
 
 public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFragmentInteractionListener {
@@ -50,22 +48,18 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        Log.d("ARRANCANDO", "La aplicación móvil se está iniciando");
         FragmentManager fm = getSupportFragmentManager();
+
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar); da fallos preguntar cuevas
+
         Fragment temp = fm.findFragmentById(R.id.main_container);
         if (temp == null) {
             FragmentTransaction ft = fm.beginTransaction();
             FragmentAuth fragment = FragmentAuth.newInstance("", "");
             ft.add(R.id.main_container, fragment, "login");
             ft.commit();
-        } else
-            Toast.makeText(this, getString(R.string.mainactivity_fragmentepresent), Toast.LENGTH_SHORT).show();
-
+        }
         SharedPreferences sf = getPreferences(MODE_PRIVATE);
         String nombre = sf.getString("USER","");
         String expires = sf.getString("EXPIRES","");
@@ -79,38 +73,34 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
         }
 
 
+
     }
 
-
-
     @Override
+    public void onFragmentInteraction(UserData udata) {
+        Autentica auth = new Autentica();
+        auth.execute(udata);
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.main_menu,menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.cambio_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.ID1:
-    Toast.makeText(this,"ID 1",Toast.LENGTH_LONG).show();
-    break;
-    default:
-    return super.onOptionsItemSelected(item);
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.cambiar) {
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onFragmentInteraction(UserData udata) {
-
-        Autentica auth = new Autentica();
-        auth.execute(udata);
-
-//        Preferences.saveCredentials(this,udata);
-
-
     }
 
     public class Autentica extends AsyncTask<UserData, Void, UserData> {
@@ -205,9 +195,9 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
                 intent.putExtra(ServiceActivity.PARAMETER_EXPIRES,userData.getExpires());
                 startActivity(intent);
             }else {
-                SharedPreferences sp = getSharedPreferences(userData.getUserName(),MODE_PRIVATE);
+                SharedPreferences sp = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor= sp.edit();
-                editor.putString("USER",userData.getUserName());
+                editor.putString("USER","");
                 editor.putString("SID","");
                 editor.putString("EXPIRES","");
                 editor.commit();
@@ -234,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
         }
 
     }
-
 
     public String readServer(UserData udata) {
         try {
@@ -269,9 +258,7 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
         return null;
     }
 
-    // Given a URL, establishes an HttpUrlConnection and retrieves
-    // the web page content as a InputStream, which it returns as
-    // a string.
+
     private String downloadUrl(String domain, String user, String pass) throws IOException {
         InputStream is = null;
         String result = "";
@@ -330,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
         }
         return result;
     }
+
 
     class ConnectTask extends AsyncTask<UserData, Integer, String> {
         @Override

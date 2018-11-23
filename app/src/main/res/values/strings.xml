@@ -22,9 +22,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="auth_contentdescription_alarm">Imagen de una alarma</string>
-    <string name="auth_correct">Autenticación ok</string>
-    <string name="auth_error">error</string>
-    <string name="main_connecting">menu_conexion</string>
     <string name="main_connected">menu_conectado</string>
     <string name="main_progress">menu_progreso</string>
+    <string name="main_connecting">menu_conectando</string>
+    <string name="auth_error">auten_error</string>
+    <string name="auth_correct">auten_correcta</string>
 </resources>
