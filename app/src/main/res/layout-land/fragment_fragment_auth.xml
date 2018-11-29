@@ -54,6 +54,14 @@
             android:ems="10"
             android:inputType="textPassword"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_auth_label_pass"
+            android:layout_marginTop="15dp"
+            android:text="Conexión por defecto a:"
+            android:textColor="@android:color/holo_red_dark" />
 
 
         <TextView
@@ -61,8 +69,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/fragment_auth_label_user"
-            android:layout_below="@+id/fragment_auth_edit_pass"
-            android:text="@string/login_ip"
+            android:layout_below="@+id/info"
+            android:layout_marginTop="10dp"
+            android:text="Dominio"
+
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/background_light" />
 
@@ -74,6 +84,7 @@
             android:layout_toEndOf="@+id/fragment_auth_label_ip"
             android:ems="10"
             android:inputType="text|textPersonName"
+            android:text="labtelema.ujaen.es"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
         <TextView
@@ -94,6 +105,7 @@
             android:layout_alignTop="@+id/fragment_auth_label_port"
             android:ems="10"
             android:inputType="textPersonName|number"
+            android:text="80"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
         <Button
             android:id="@+id/fragment_auth_button"

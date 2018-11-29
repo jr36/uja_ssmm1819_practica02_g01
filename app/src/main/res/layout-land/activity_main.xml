@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_root"
     android:layout_width="match_parent"
@@ -16,22 +17,19 @@
         android:orientation="vertical"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/main_apptitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:text="My Soccer"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+        <ImageView
+            android:id="@+id/titulo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/tituloof" />
 
         <TextView
             android:id="@+id/main_degree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="@string/main_description"
+            android:text=" Autenticación: "
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
