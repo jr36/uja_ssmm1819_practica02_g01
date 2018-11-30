@@ -68,7 +68,7 @@
         android:layout_below="@+id/fragment_auth_label_pass"
         android:layout_marginTop="15dp"
         android:text="Conexión por defecto a:"
-        android:textColor="@android:color/holo_red_dark" />
+        android:textColor="#f4e405" />
 
     <TextView
         android:id="@+id/fragment_auth_label_ip"
