@@ -19,7 +19,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
-
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -31,6 +34,7 @@ import java.net.Socket;
 import java.net.URL;
 
 import data.UserData;
+import data.Preferences;
 
 public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFragmentInteractionListener {
 
@@ -63,9 +67,21 @@ public class MainActivity extends AppCompatActivity implements FragmentAuth.OnFr
         SharedPreferences sf = getPreferences(MODE_PRIVATE);
         String nombre = sf.getString("USER","");
         String expires = sf.getString("EXPIRES","");
+        String sid = sf.getString("SID", "");
         if(nombre!="" && expires!=""){
-            //Control de sesión
-            Toast.makeText(this,"Bienvenido "+nombre, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bienvenido " + nombre, Toast.LENGTH_LONG).show();
+            SimpleDateFormat sdf = new SimpleDateFormat("y-M-d-H-m-s");
+            Date expirationDate = sdf.parse(expires, new ParsePosition(0));
+            Date instant = new Date(System.currentTimeMillis());
+            if (expirationDate.getTime() > instant.getTime()) {
+                //Autenticar de manera transparente
+                Intent intent = new Intent(this, ServiceActivity.class);
+                intent.putExtra(ServiceActivity.PARAMETER_USER, nombre);
+                intent.putExtra(ServiceActivity.PARAMETER_EXPIRES, expires);
+                intent.putExtra(ServiceActivity.PARAMETER_SID, sid);
+                startActivity(intent);
+
+            }
             //comprobar si expires > momento actual
             //Si es mayor -> abro actividad (sesión válida)
             // ----> startActivity()
