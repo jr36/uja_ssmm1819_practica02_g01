@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ServiceActivity">
 
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,19 +22,18 @@
     </android.support.design.widget.AppBarLayout>
 
     <include
-        layout="@layout/content_service"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp" />
+        android:id="@+id/include"
+        layout="@layout/content_service" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="107dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:backgroundTint="@android:color/background_light"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/balon"
-        tools:layout_width="@dimen/nav_header_height" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Acceder a la tienda"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="bottom|center" />
+
 
 </android.support.design.widget.CoordinatorLayout>

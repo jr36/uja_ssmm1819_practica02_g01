@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Practica 1</string>
+    <string name="app_name">Practice 2</string>
     <string name="main_description">Mobile Services</string>
     <string name="login_pass">Password</string>
     <string name="fragment_button_connect">Login</string>
     <string name="fragment_auth_user">User</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_hint_user">Enter your user</string>
+    <string name="login_hint_pass">Write your password here</string>
+    <string name="login_ip">Address</string>
+    <string name="lagin_port">Port</string>
+    <string name="login_hint_ip">IP Address or Domain</string>
+    <string name="login_hint_port">Port TCP Server</string>
+    <string name="mainactivity_fragmentepresent">There is already a fragment</string>
+    <string name="title_activity_service">ServiceActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="auth_contentdescription_alarm">Image of an alarm</string>
+    <string name="main_connected">menu_connected</string>
+    <string name="main_progress">menu_progress</string>
+    <string name="main_connecting">menu_connecting</string>
+    <string name="auth_error">auten_error</string>
+    <string name="auth_correct">auten_correct</string>
 </resources>
